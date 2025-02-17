@@ -1,26 +1,30 @@
 from django.db import models
 
-# Create your models here.
-class Estado(models.Model):
-    nome = models.CharField(max_length=50)
-    sigla = models.CharField(max_length=2)
+
+class Livros(models.Model):
+    id = models.primary_key=True
+    ano_publicacao = models.DateField(max_length=50)
+    titulo = models.CharField(max_length=50)
+    autor = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.nome} ({self.sigla})"
+        return f"{self.titulo} ({self.ano_publicacao})"
 
-
-class Cidade(models.Model):
+class Alunos(models.Model):
+    id = models.primary_key=True
     nome = models.CharField(max_length=50)
-    estado = models.ForeignKey(Estado, on_delete=models.PROTECT)
+    matricula = models.CharField(max_length=50)
+    curso = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.nome} ({self.estado.sigla})"
+        return f"{self.nome} {self.matricula} {self.curso} "
 
-class Pessoa(models.Model):
+class Emprestimos(models.Model):
     nome = models.CharField(max_length=50)
-    telefone = models.CharField(max_length=13)
-    email = models.EmailField(max_length=50)
-    data = models.DateField(max_length=10)
-    cidade = models.ForeignKey(Cidade, on_delete=models.PROTECT)
+    data_emprestimo = models.DateField(max_length=50)
+    data_devolucao = models.DateField(max_length=50)
+    id_livro = models.ForeignKey(Livros, on_delete=models.PROTECT)
+    id_aluno = models.ForeignKey(Alunos, on_delete=models.PROTECT)
+
     def __str__(self):
-        return f"{self.nome} ({self.cidade})"
+        return f"{self.id_aluno} {self.id_livro} {self.data_emprestimo} {self.data_devolucao}"

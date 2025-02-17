@@ -1,22 +1,22 @@
 from django.shortcuts import render
 
 from rest_framework.viewsets import ModelViewSet
-from alunos.models import Estado
-from alunos.models import Cidade
-from alunos.models import Pessoa
-from alunos.serializers import EstadoSerializer
-from alunos.serializers import CidadeSerializer
-from alunos.serializers import PessoaSerializer
+from alunos.models import Livros
+from alunos.models import Alunos
+from alunos.models import Emprestimos
+from alunos.serializers import LivrosSerializer
+from alunos.serializers import AlunosSerializer
+from alunos.serializers import EmprestimosSerializer
 
-class EstadoViewSet(ModelViewSet):
-    queryset = Estado.objects.all()
-    serializer_class = EstadoSerializer
+class LivrosViewSet(ModelViewSet):
+    queryset = Livros.objects.all()
+    serializer_class = LivrosSerializer
 
-class CidadeViewSet(ModelViewSet):
-    queryset = Cidade.objects.all()
-    serializer_class = CidadeSerializer
+class AlunosViewSet(ModelViewSet):
+    queryset = Alunos.objects.all()
+    serializer_class = AlunosSerializer
 
-class PessoaViewSet(ModelViewSet):
-    queryset = Pessoa.objects.all()
-    serializer_class = PessoaSerializer
+class EmprestimosViewSet(ModelViewSet):
+    queryset = Emprestimos.objects.all()
+    serializer_class = EmprestimosSerializer
 

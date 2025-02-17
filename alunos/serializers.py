@@ -1,19 +1,19 @@
 from rest_framework.serializers import ModelSerializer
-from alunos.models import Estado
-from alunos.models import Cidade
-from alunos.models import Pessoa
+from alunos.models import Livros
+from alunos.models import Alunos
+from alunos.models import Emprestimos
 
-class EstadoSerializer(ModelSerializer):
+class LivrosSerializer(ModelSerializer):
     class Meta:
-        model = Estado
+        model = Livros
         fields = '__all__'
 
-class CidadeSerializer(ModelSerializer):
+class AlunosSerializer(ModelSerializer):
     class Meta:
-        model = Cidade
+        model = Alunos
         fields = '__all__'
 
-class PessoaSerializer(ModelSerializer):
+class EmprestimosSerializer(ModelSerializer):
     class Meta:
-        model = Pessoa
+        model = Emprestimos
         fields = '__all__'
